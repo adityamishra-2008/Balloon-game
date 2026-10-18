@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Billoti Balloon Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1b1330;--w1:#b06f3f;--w2:#7a4524;--wd:#4b2a14;--tx:#ffe9b8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0a1c}}
+:root[data-theme="dark"]{--bg:#0e0a1c}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);font-family:'Baloo 2',system-ui,sans-serif;user-select:none;-webkit-user-select:none;touch-action:none;overflow:hidden}
+#app{position:fixed;inset:0;margin:auto;max-width:480px;overflow:hidden;color:#fff}
+.scr{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;padding:12px 14px;padding-top:calc(12px + env(safe-area-inset-top,0px));padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+.scr.on{display:flex}
+.wood{background:linear-gradient(var(--w1),var(--w2));border:3px solid var(--wd);border-radius:14px;color:var(--tx);box-shadow:0 3px 0 #0005,inset 0 2px 0 #fff3}
+.logo{position:relative;text-align:center;padding:8px 22px 4px;margin-top:22px}
+.logo b{display:block;font-size:52px;line-height:.9;font-weight:800;color:#ffcf40;-webkit-text-stroke:3px #5a2d12;paint-order:stroke fill;text-shadow:0 4px 0 #5a2d12}
+.logo span{font-size:22px;font-weight:800;color:#ffe9b8}
+.logo i{position:absolute;top:-32px;left:50%;transform:translateX(-50%);font-style:normal;font-size:46px}
+.coin{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));right:12px;padding:2px 12px;border-radius:20px;font-weight:800;z-index:5;font-size:18px}
+.back{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));left:12px;width:40px;height:40px;border-radius:50%;font-size:20px;display:grid;place-items:center;z-index:5}
+.btn{width:100%;max-width:300px;border:0;border-radius:14px;padding:6px 12px;font:800 22px 'Baloo 2',sans-serif;color:#fff;text-shadow:0 2px 0 #0004;display:flex;gap:10px;justify-content:center;align-items:center;box-shadow:0 4px 0 #0005,inset 0 2px 0 #fff5;touch-action:manipulation}
+.btn:active{transform:translateY(3px)}
+.g{background:linear-gradient(#5fd35f,#2d9a35)}.o{background:linear-gradient(#ffb93d,#e08a00)}.p{background:linear-gradient(#a56cf0,#6c3ac4)}.b{background:linear-gradient(#3fb6f2,#1c7fc2)}.r{background:linear-gradient(#f4645f,#c22e32)}
+.btn.dis{filter:grayscale(1);opacity:.7}
+/* splash */
+#splash{background:linear-gradient(#2b2f77,#c95b9f 60%,#ffb36b);justify-content:flex-start}
+#splash .cat{font-size:130px;margin-top:auto;line-height:1}
+.ld{width:80%;height:22px;border-radius:12px;border:3px solid #fff;background:#0004;overflow:hidden;margin-bottom:20px;margin-top:10px}.ld i{display:block;height:100%;width:0;background:linear-gradient(#ffb93d,#e08a00);animation:ld 1.8s forwards}
+@keyframes ld{to{width:100%}}
+.city{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(transparent,#1a1440);clip-path:polygon(0 60%,8% 60%,8% 35%,16% 35%,16% 55%,26% 55%,26% 25%,34% 25%,34% 50%,45% 50%,45% 38%,55% 38%,55% 60%,68% 60%,68% 30%,78% 30%,78% 52%,90% 52%,90% 42%,100% 42%,100% 100%,0 100%);opacity:.9}
+/* home */
+#home{background:linear-gradient(#57b7f5,#cfeeff 55%,#f5d9a8);gap:8px;justify-content:flex-start}
+.banw{position:relative;margin-top:40px;width:94%;text-align:center}.ban{padding:4px 14px;background:linear-gradient(#ffe27a,#f2b72e);color:#7a1b4d;font:800 24px 'Baloo 2';font-size:clamp(17px,5.6vw,24px);border:3px solid #a8691c;border-radius:10px;box-shadow:0 3px 0 #0003;white-space:nowrap}.bl,.br{position:absolute;top:-32px;font-size:30px}.bl{left:0}.br{right:0}
+@keyframes fl{50%{transform:translateY(-6px)}}.bl,.br{animation:fl 2s infinite}.br{animation-delay:.7s}
+.shopf{position:relative;width:86%;flex:0 0 auto;height:190px;margin-top:10px;background:linear-gradient(#8a5a35,#5a3a20);border:4px solid var(--wd);border-radius:10px}
+.aw{height:34px;background:repeating-linear-gradient(90deg,#fff 0 22px,#e8434f 22px 44px);border-radius:10px 10px 18px 18px;border-bottom:4px solid #0003}
+.sgn{position:absolute;top:-22px;left:50%;transform:translateX(-50%);padding:0 18px;white-space:nowrap;text-align:center;line-height:1}
+.sgn b{font-size:26px;color:#ffcf40;-webkit-text-stroke:2px #5a2d12;paint-order:stroke fill}.sgn small{display:block;font-size:15px;font-weight:800}
+.win{position:absolute;left:10px;right:90px;top:44px;bottom:6px;background:linear-gradient(#ffe6b0,#f3bd6e);border:3px solid var(--wd);border-radius:8px;display:flex;align-items:flex-end;justify-content:center;font-size:76px;line-height:1}
+.win:before{content:'🎈🎈🎈';position:absolute;top:4px;font-size:22px}
+.bd{position:absolute;right:8px;bottom:6px;width:74px;padding:6px 2px;background:#2b2b2b;border:3px solid #7a4a28;border-radius:5px;font:700 13px/1.15 'Baloo 2';text-align:center;color:#eee}
+.menu{display:flex;flex-direction:column;gap:9px;width:100%;align-items:center;margin-top:8px}
+@media (max-height:680px){.shopf{height:150px}.win{font-size:56px}.btn{font-size:19px}.menu{gap:6px}}
+/* panels */
+.ttl{font:800 28px 'Baloo 2';padding:2px 30px;margin:30px 0 8px}
+#shop{background:linear-gradient(#2b2150,#17102e)}#mini{background:linear-gradient(#2b2150,#17102e)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;flex:0 0 auto}
+.card{background:linear-gradient(#2c4a7a,#162c52);border:3px solid #5d86c0;border-radius:12px;text-align:center;padding:6px 2px;color:#fff;font:700 14px/1.1 'Baloo 2';touch-action:manipulation}
+.card.sel{border-color:#ffcf40;box-shadow:0 0 12px #ffcf40}.card small{display:block;font-size:12px;opacity:.85;margin-top:2px}.card canvas{display:block;margin:auto}
+.foot{margin-top:auto;font-weight:700;text-align:center;padding:8px;opacity:.9}
+.mgc{height:120px;font-size:46px;display:flex;flex-direction:column;justify-content:center;font-weight:700}.mgc span{font-size:16px}
+/* fill */
+#fill{background:linear-gradient(#5c3a22,#3b2414);justify-content:flex-start}
+#fill:before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,#0000 0 70px,#0004 70px 76px)}
+.bub{position:relative;margin-top:44px;background:#fff;color:#3a2a20;padding:8px 14px;border-radius:16px;font-weight:700;font-size:16px;max-width:75%;text-align:center}
+.tank{position:absolute;right:16px;bottom:170px;width:92px;height:230px;border-radius:40px 40px 14px 14px;background:linear-gradient(90deg,#1c5fd1,#3b8cff 40%,#1646a3);border:3px solid #0d2e6b;color:#fff;font:800 17px 'Baloo 2';display:flex;align-items:flex-end;justify-content:center;padding-bottom:50px;touch-action:none}
+.tank:before{content:'';position:absolute;top:-24px;left:30px;width:32px;height:24px;background:#8a949f;border-radius:4px}
+.tank.pm{animation:sh .1s infinite}@keyframes sh{50%{transform:translateX(2px) rotate(1deg)}}
+.fl{position:absolute;left:0;right:0;bottom:96px;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 24px}
+.pb{width:100%;height:28px;border-radius:16px;background:#0006;border:3px solid #5dc;overflow:hidden}.pb i{display:block;height:100%;width:0;background:linear-gradient(#8f8,#2b4)}
+#fc{position:absolute;left:0;top:90px;width:100%;height:330px}
+.fcat{position:absolute;left:10px;bottom:160px;font-size:110px;line-height:1}
+/* game */
+#game{padding:0;background:#000}
+#gc{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.hud{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));left:10px;right:10px;display:flex;justify-content:space-between;align-items:center;pointer-events:none;text-shadow:0 2px 3px #0008;font-weight:800;font-size:22px}
+.cb{position:absolute;right:10px;top:38%;display:flex;flex-direction:column;gap:10px}
+.cb button{width:64px;padding:8px 2px;border-radius:14px;border:3px solid #fff6;background:#1c2a5bcc;color:#fff;font:700 12px/1.1 'Baloo 2';touch-action:none}.cb button b{display:block;font-size:24px}
+.ov{position:absolute;inset:0;background:#000a;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;z-index:9}.ov.on{display:flex}
+#home .coin,#shop .coin{}
+.cl{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));left:12px;width:40px;height:40px;border-radius:50%;background:#0006;color:#fff;border:2px solid #fff6;font-size:18px;z-index:6;pointer-events:auto}
+</style></head><body>
+<div id="app">
+<div id="splash" class="scr on"><div class="city"></div><div class="logo wood" style="background:none;border:0;box-shadow:none"><i>🐱</i><b>Billoti</b><span>Balloon Shop</span></div><div style="font-weight:700;margin-top:6px">Fill · Fly · Pop · Have Fun! 🐾</div><div class="cat">🐈‍⬛</div><div class="ld"><i></i></div></div>
+
+<div id="home" class="scr"><div class="coin wood">🪙 <span class="cn"></span></div>
+<div class="banw"><span class="bl">🎈🎈</span><div class="ban">Labu Meli Muggu Baby 💕</div><span class="br">🎈🎈</span></div>
+<div class="shopf"><div class="aw"></div><div class="sgn wood"><b>Billoti</b><small>Balloon Shop</small></div><div class="win">🐱</div><div class="bd">Balloons<br>Helium<br>Gifts<br>&amp; More..</div></div>
+<div class="menu"><button class="btn g" data-go="play">▶ Play</button><button class="btn o" data-go="shop">🏪 Shop</button><button class="btn p" data-go="coll">🎈 My Balloons</button><button class="btn b" data-go="mini">🎮 Mini Games</button><button class="btn r" id="snd">🔊 Sound: ON</button></div></div>
+
+<div id="shop" class="scr"><div class="coin wood">🪙 <span class="cn"></span></div><button class="back wood" data-go="home">←</button><div class="ttl wood" id="st">Balloon Shop</div><div class="grid" id="sg"></div><div class="foot" id="sf">Each balloon behaves differently in the air! 🐾</div></div>
+
+<div id="mini" class="scr"><button class="back wood" data-go="home">←</button><div class="ttl wood">Mini Games</div><div class="grid" style="grid-template-columns:1fr 1fr"><div class="card mgc" data-mode="free">🕊️<span>Free Fly</span></div><div class="card mgc" data-mode="time">⏱️<span>Time Mode</span></div></div><div class="foot">🐾 More games coming soon! 🐾</div></div>
+
+<div id="fill" class="scr"><div class="coin wood">🪙 <span class="cn"></span></div><button class="back wood" data-go="home">←</button><div class="bub" id="bub">Tap the helium tank to fill the balloon!</div><canvas id="fc"></canvas><div class="fcat">🐱</div><div class="tank" id="tank">HELIUM</div>
+<div class="fl"><div class="pb"><i id="pf"></i></div><button class="btn g" id="rel">🎈 Release!</button></div></div>
+
+<div id="game" class="scr"><canvas id="gc"></canvas><div class="hud"><span id="hr" style="margin-left:46px"></span><span id="gi"></span><span class="wood" style="padding:0 12px;border-radius:20px">🪙 <span id="gcn">0</span></span></div><button class="cl" id="cl">✕</button>
+
+<div class="ov" id="ov"><div class="ttl wood" id="ot" style="font-size:36px"></div><div id="os" style="font-size:22px;font-weight:700"></div><button class="btn g" id="again">↻ Play again</button><button class="btn o" data-go="home">🏠 Home</button></div></div>
+</div>
+<script>
+const $=i=>document.getElementById(i),Q=s=>document.querySelectorAll(s);
+let S={coins:150,own:['classic'],sel:'classic',snd:1};
+try{Object.assign(S,JSON.parse(localStorage.getItem('bb')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('bb',JSON.stringify(S))}catch(e){}};
+const T={classic:{n:'Classic',c:'#ff4d4d',p:0,r:1,l:1,ky:1},heart:{n:'Heart',c:'#ff5fa2',p:20,r:1.05,l:1.05,ky:.95},star:{n:'Star',c:'#ffc83d',p:20,r:1.1,l:1.1,ky:.6},animal:{n:'Animal',c:'#ffb347',p:30,r:1,l:1.05,ky:1},glow:{n:'Glow',c:'#8fd8ff',p:30,r:1,l:1.15,ky:1},big:{n:'Big',c:'#9b59d6',p:40,r:1.35,l:.9,ky:1}};
+function shape(g,x,y,r,k,sq){
+  g.save();g.translate(x,y);g.scale(1-(sq||0)*.3,1+(sq||0)*.3);const c=T[k].c;
+  if(k==='glow'){g.shadowColor='#cff';g.shadowBlur=30}
+  g.fillStyle=c;g.strokeStyle='#0003';g.lineWidth=2;g.beginPath();
+  if(k==='heart'){g.moveTo(0,r*.95);g.bezierCurveTo(-r*1.5,r*.1,-r*.9,-r*1.1,0,-r*.45);g.bezierCurveTo(r*.9,-r*1.1,r*1.5,r*.1,0,r*.95)}
+  else if(k==='star'){for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,q=i%2?r*.5:r*1.1;g.lineTo(Math.cos(a)*q,Math.sin(a)*q)}g.closePath()}
+  else{if(k==='animal'){g.moveTo(-r*.8,-r*.3);g.lineTo(-r*.7,-r*1.1);g.lineTo(-r*.15,-r*.85);g.moveTo(r*.8,-r*.3);g.lineTo(r*.7,-r*1.1);g.lineTo(r*.15,-r*.85)}g.ellipse(0,0,r*.85,r,0,0,6.29)}
+  g.fill();g.stroke();g.shadowBlur=0;{const q=g.createRadialGradient(-r*.3,-r*.35,r*.05,0,0,r*1.1);q.addColorStop(0,'#fff7');q.addColorStop(.5,'#fff0');q.addColorStop(1,'#0003');g.fillStyle=q;g.fill()}
+  if(k==='big'){g.strokeStyle='#fff6';g.lineWidth=r*.12;for(let i=-1;i<=1;i++){g.beginPath();g.ellipse(0,0,r*.85,r*.4*(i+1.5),0,0,6.29);g.stroke()}}
+  if(k==='animal'){g.fillStyle='#3a2a20';g.beginPath();g.arc(-r*.3,-r*.1,r*.09,0,6.29);g.arc(r*.3,-r*.1,r*.09,0,6.29);g.fill();g.beginPath();g.moveTo(-r*.08,r*.1);g.lineTo(r*.08,r*.1);g.lineTo(0,r*.2);g.fill()}
+  else{g.fillStyle='#fff9';g.beginPath();g.ellipse(-r*.4,-r*.4,r*.12,r*.2,.5,0,6.29);g.fill()}
+  const ky=r*T[k].ky;g.fillStyle=c;g.beginPath();g.moveTo(0,ky);g.lineTo(-5,ky+9);g.lineTo(5,ky+9);g.fill();g.restore();
+}
+let AC;const ac=()=>{if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();AC.resume();return AC};
+function snd(k){if(!S.snd)return;try{const a=ac(),t=a.currentTime;if(k==='pop'){const n=a.sampleRate*.25,b=a.createBuffer(1,n,a.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,4);const s=a.createBufferSource();s.buffer=b;s.connect(a.destination);s.start()}else{const o=a.createOscillator(),gn=a.createGain();o.frequency.setValueAtTime(k==='coin'?880:300,t);o.frequency.exponentialRampToValueAtTime(k==='coin'?1320:540,t+.12);gn.gain.setValueAtTime(.14,t);gn.gain.exponentialRampToValueAtTime(.001,t+.2);o.connect(gn).connect(a.destination);o.start();o.stop(t+.2)}}catch(e){}}
+function ui(){Q('.cn').forEach(e=>e.textContent=S.coins);$('snd').textContent='🔊 Sound: '+(S.snd?'ON':'OFF');save()}
+let cur='splash',mode='play',collMode=false;
+function go(id){if(id==='play'){mode='play';id='fill'}if(id==='coll'){collMode=true;id='shop'}else if(id==='shop')collMode=false;
+  Q('.scr').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');cur=id;hissOff();$('ov').classList.remove('on');
+  if(id==='shop')renderShop();if(id==='fill'){hand=0;$('bub').textContent='Tap the helium tank to fill the '+T[S.sel].n+' balloon!'}if(id==='game')rz();ui()}
+Q('[data-go]').forEach(b=>b.onclick=()=>{ac();go(b.dataset.go)});
+Q('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;go('fill')});
+$('snd').onclick=()=>{S.snd^=1;ui()};
+setTimeout(()=>go('home'),2000);
+function renderShop(){
+  $('st').textContent=collMode?'My Balloons':'Balloon Shop';$('sf').textContent=collMode?S.own.length+' / 6 collected 🐾':'Tap a balloon to buy it!';
+  const gr=$('sg');gr.innerHTML='';
+  for(const k in T){const t=T[k],own=S.own.includes(k),d=document.createElement('div');d.className='card'+(S.sel===k&&own?' sel':'');
+    const c=document.createElement('canvas');c.width=140;c.height=150;c.style.cssText='width:70px;height:75px';if(!own&&collMode)c.style.opacity=.3;shape(c.getContext('2d'),70,68,t.r*28,k);d.appendChild(c);
+    d.insertAdjacentHTML('beforeend',t.n+'<small>'+(own?(S.sel===k?'Selected ✓':'Owned'):(collMode?'🔒 Locked':'🪙 '+t.p))+'</small>');
+    d.onclick=()=>{if(own){S.sel=k;snd('b')}else if(!collMode){if(S.coins>=t.p){S.coins-=t.p;S.own.push(k);S.sel=k;snd('coin')}else $('sf').textContent='Not enough coins! Play to earn more 🪙'}ui();renderShop()};gr.appendChild(d)}
+}
+/* fill */
+let hand=0,pump=false,hs=null;
+function hissOn(){if(!S.snd||hs)return;try{const a=ac(),n=a.sampleRate*2,b=a.createBuffer(1,n,a.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;const s=a.createBufferSource();s.buffer=b;s.loop=true;const f=a.createBiquadFilter();f.type='bandpass';f.frequency.value=2500;f.Q.value=.8;const gn=a.createGain();gn.gain.setValueAtTime(.0001,a.currentTime);gn.gain.linearRampToValueAtTime(.25,a.currentTime+.08);s.connect(f).connect(gn).connect(a.destination);s.start();hs={s,f,gn}}catch(e){}}
+function hissOff(){if(!hs)return;const h=hs;hs=null;try{const a=ac();h.gn.gain.cancelScheduledValues(a.currentTime);h.gn.gain.linearRampToValueAtTime(.0001,a.currentTime+.08);h.s.stop(a.currentTime+.1)}catch(e){}}const fc=$('fc'),fg=fc.getContext('2d');
+const tk=$('tank');tk.addEventListener('pointerdown',e=>{e.preventDefault();pump=true;tk.setPointerCapture(e.pointerId);tk.classList.add('pm');if(hand<1)hissOn();$('bub').textContent='Filling... pump pump! 🎈';ac()});
+['pointerup','pointercancel'].forEach(k=>tk.addEventListener(k,()=>{pump=false;hissOff();tk.classList.remove('pm')}));
+$('rel').onclick=()=>{if(hand<.6){$('bub').textContent='Thodi aur helium bharo, tab udega! 😼';return}start()};
+function drawFill(dt){
+  if(pump&&hand<1)hand=Math.min(1,hand+.4*dt);if(hs){hs.f.frequency.value=2200+hand*2800;if(hand>=1){hissOff();snd('coin')}}$('pf').style.width=hand*100+'%';$('rel').classList.toggle('dis',hand<.6);
+  const w=fc.clientWidth,h=fc.clientHeight;if(fc.width!==w*2){fc.width=w*2;fc.height=h*2}fg.setTransform(2,0,0,2,0,0);fg.clearRect(0,0,w,h);
+  if(hand>0){const k=S.sel,r=(18+hand*52)*T[k].r,x=w*.42,y=h*.5;fg.strokeStyle='#fff8';fg.lineWidth=2;fg.beginPath();fg.moveTo(x,y+r);fg.lineTo(w*.32,h*.95);fg.stroke();shape(fg,x,y,r,k,pump?Math.sin(performance.now()/40)*.05:0)}
+}
+/* game */
+const cv=$('gc'),g=cv.getContext('2d');let W=0,H=0,G=null;
+function rz(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*2;cv.height=H*2;g.setTransform(2,0,0,2,0,0)}
+addEventListener('resize',()=>{if(cur==='game')rz()});
+const R=()=>(24+G.fill*26)*T[G.k].r;
+function start(){go('game');rz();const rope=[];for(let i=0;i<6;i++)rope.push({x:W/2,y:H*.6+i*13,px:W/2,py:H*.6+i*13});
+  G={k:S.sel,mode,fill:hand,x:W/2,y:H*.55,vx:0,vy:0,t:0,lives:3,coins:0,sq:0,held:0,last:0,items:[],parts:[],rope,sp:0,inv:0,up:0,dn:0,time:60,end:0,rain:[],stars:[...Array(40)].map(()=>[Math.random()*W,Math.random()*H*.8]),shake:0};hud()}
+$('again').onclick=()=>go('fill');$('cl').onclick=()=>{G=null;go('home')};
+
+function hud(){$('hr').textContent='❤️'.repeat(G.lives)+'🤍'.repeat(3-G.lives);$('gcn').textContent=G.coins;$('gi').textContent=G.mode==='time'?'⏱ '+Math.ceil(G.time):''}
+function hearts(x,y,n){for(let i=0;i<n;i++)G.parts.push({e:Math.random()<.5?'💕':'❤️',x:x+(Math.random()-.5)*80,y:y+(Math.random()-.5)*40,vx:(Math.random()-.5)*40,vy:-50-Math.random()*60,l:1.5,s:16+Math.random()*14})}
+function endGame(t){G.end=0;G.over=1;const earn=G.coins;S.coins+=earn;ui();$('ot').textContent=t;$('os').textContent='🪙 +'+earn+' coins earned';$('ov').classList.add('on')}
+function popB(){if(G.dead)return;G.dead=1;snd('pop');G.pt=.9;G.title='Balloon popped!';for(let i=0;i<28;i++){const a=Math.random()*6.29,s=120+Math.random()*320;G.parts.push({c:T[G.k].c,x:G.x,y:G.y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:.9,s:3+Math.random()*5,sh:1})}}
+const pos=e=>{const r=cv.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}};
+cv.addEventListener('pointerdown',e=>{if(!G||G.dead||G.over)return;const p=pos(e),r=R(),n=performance.now();ac();
+  if(((p.x-G.x)/(r*.9+16))**2+((p.y-G.y)/(r+16))**2<1.1){if(n-G.last<320){popB();return}G.last=n;G.held=1;G.ox=G.x-p.x;G.oy=G.y-p.y;G.tx=G.x;G.ty=G.y;G.vx=0;G.vy=0;cv.setPointerCapture(e.pointerId);snd('b');return}
+  const a=G.rope[5];if(Math.hypot(p.x-a.x,p.y-a.y-20)<60){hearts(a.x,a.y,10);snd('coin')}});
+cv.addEventListener('pointermove',e=>{if(G&&G.held){const p=pos(e);G.tx=p.x+G.ox;G.ty=p.y+G.oy}});
+['pointerup','pointercancel'].forEach(k=>cv.addEventListener(k,()=>{if(G)G.held=0}));
+const PL=[[[90,184,245],[216,241,255]],[[255,140,90],[255,214,165]],[[11,20,69],[59,42,122]]];
+function sky(){const c=(G.t/25)%3,i=c|0,f=c-i,s=f*f*(3-2*f),a=PL[i],b=PL[(i+1)%3],m=(u,v)=>'rgb('+u.map((x,j)=>x+(v[j]-x)*s|0)+')';return[m(a[0],b[0]),m(a[1],b[1]),i===1?s:i===2?1-s:0,i]}
+function upd(dt){
+  G.t+=dt;G.sq*=Math.pow(.02,dt);G.inv=Math.max(0,G.inv-dt);G.shake=Math.max(0,G.shake-dt);
+  if(G.dead){G.pt-=dt;if(G.pt<=0&&!G.over)endGame(G.title);}
+  else{
+    const r=R(),rain=Math.floor(G.t/20)%3===2&&G.mode!=='free';G.fill=Math.max(Math.min(G.fill,.6),G.fill-.0015*dt);
+    if(!isFinite(G.x+G.y+G.vx+G.vy)){G.x=W/2;G.y=H*.5;G.vx=G.vy=0}if(G.held){G.vx+=((G.tx-G.x)*16-G.vx)*Math.min(1,dt*18);G.vy+=((G.ty-G.y)*16-G.vy)*Math.min(1,dt*18)}
+    else{const w=1,lift=G.fill*2.2*T[G.k].l;G.vy+=-(lift-w)*300*dt;G.vy-=G.vy*1.2*dt;G.vx-=G.vx*1.4*dt;G.vx+=(Math.sin(G.t*.7)*22+(rain?70:0))*dt}
+    G.x+=G.vx*dt;G.y+=G.vy*dt;if(!G.held&&G.vy<-120&&Math.random()<.4)G.parts.push({e:'✨',x:G.x+(Math.random()-.5)*30,y:G.y+r,vx:0,vy:40,l:.6,s:14});
+    if(G.y-r<0){G.y=r;if(G.vy<-80){G.sq=.25;snd('b')}G.vy=Math.abs(G.vy)*.35}
+    if(G.y+r>H-50){G.y=H-50-r;G.vy*=-.3}
+    if(G.x<r*.85){G.x=r*.85;G.vx=Math.abs(G.vx)*.6}if(G.x>W-r*.85){G.x=W-r*.85;G.vx=-Math.abs(G.vx)*.6}
+    if(rain)for(let i=0;i<4;i++)G.rain.push({x:Math.random()*W,y:-10,v:500+Math.random()*200});
+    G.sp-=dt;if(G.sp<=0){G.sp=.8;const q=Math.random(),it={x:30+Math.random()*(W-60),y:-30,vx:0,vy:85+Math.min(G.t,60),r:16};
+      if(q<.5){it.t='coin';it.e='🪙'}else if(q<.62){it.t='heart';it.e='❤️'}else if(G.mode!=='free'){it.t='bird';it.e='🐦';const d=Math.random()<.5?1:-1;it.x=d>0?-30:W+30;it.y=40+Math.random()*H*.7;it.vx=d*(110+Math.random()*70);it.vy=0;it.r=18}else{it.t='coin';it.e='🪙'}G.items.push(it)}
+    for(const it of G.items){it.x+=it.vx*dt;it.y+=it.vy*dt;if(it.dead)continue;
+      if(Math.hypot(it.x-G.x,it.y-G.y)<r*.85+it.r){it.dead=1;
+        if(it.t==='coin'){G.coins+=5;G.parts.push({e:'+5 🪙',x:it.x,y:it.y,vx:0,vy:-60,l:.8,s:20});snd('coin');hud()}else if(it.t==='heart'){if(G.lives<3)G.lives++;G.coins+=2;hearts(G.x,G.y,6);snd('coin');hud()}
+        else if(!G.inv){G.lives--;G.inv=1.3;G.shake=.3;G.vy+=200;snd('b');hud();if(G.lives<=0){G.dead=1;G.pt=.6;G.title='Out of hearts!'}}}}
+    G.items=G.items.filter(i=>!i.dead&&i.y<H+40&&i.x>-60&&i.x<W+60);
+    if(G.mode==='time'){G.time-=dt;if(G.time<=0){G.dead=1;G.pt=.1;G.title='Time up!'}hud()}
+    const rp=G.rope;rp[0].x=G.x;rp[0].y=G.y+r*T[G.k].ky;rp[0].px=rp[0].x;rp[0].py=rp[0].y;
+    for(let i=1;i<6;i++){const p=rp[i],vx=(p.x-p.px)*.985,vy=(p.y-p.py)*.985;p.px=p.x;p.py=p.y;p.x+=vx;p.y+=vy+700*dt*dt}
+    for(let k=0;k<3;k++)for(let i=1;i<6;i++){const a=rp[i-1],p=rp[i],dx=p.x-a.x,dy=p.y-a.y,l=Math.hypot(dx,dy)||1,f=(l-13)/l;p.x-=dx*f;p.y-=dy*f}
+    for(const p of rp)if(p.y>H-30)p.y=H-30;
+  }
+  for(const p of G.parts){p.l-=dt;p.x+=(p.vx||0)*dt;p.y+=p.vy*dt;if(p.sh)p.vy+=600*dt}G.parts=G.parts.filter(p=>p.l>0);
+  for(const d of G.rain)d.y+=d.v*dt;G.rain=G.rain.filter(d=>d.y<H);
+}
+function drawG(){
+  const[c1,c2,n,pi]=sky(),gr=g.createLinearGradient(0,0,0,H);gr.addColorStop(0,c1);gr.addColorStop(1,c2);g.save();if(G.shake>0)g.translate((Math.random()-.5)*8,(Math.random()-.5)*8);g.fillStyle=gr;g.fillRect(-10,-10,W+20,H+20);
+  g.fillStyle='rgba(255,255,255,'+n+')';for(const s of G.stars)g.fillRect(s[0],s[1],2,2);
+  g.fillStyle='rgba(255,255,255,'+(.8-n*.6)+')';for(let i=0;i<4;i++){const x=((i*170+G.t*(8+i*3))%(W+160))-80,y=H*(.15+i*.2);g.beginPath();g.arc(x,y,24,0,6.29);g.arc(x+26,y+4,30,0,6.29);g.arc(x+56,y+6,20,0,6.29);g.fill()}
+  g.fillStyle='#0003';g.fillRect(0,H-26,W,26);
+  const rp=G.rope,r=R();g.strokeStyle='#fff9';g.lineWidth=1.8;g.beginPath();g.moveTo(rp[0].x,rp[0].y);for(const p of rp)g.lineTo(p.x,p.y);g.stroke();
+  // poster + cat
+  const a=rp[5],b=rp[4];let dx=a.x-b.x,dy=a.y-b.y;const l=Math.hypot(dx,dy)||1;dx/=l;dy/=l;
+  g.save();g.translate(a.x+dx*20,a.y+dy*20);g.rotate(Math.atan2(-dx,dy));g.fillStyle='#ff5c8a';g.strokeStyle='#fff';g.lineWidth=3;g.beginPath();g.roundRect(-44,-16,88,34,8);g.fill();g.stroke();g.fillStyle='#fff';g.font="800 22px 'Baloo 2',sans-serif";g.textAlign='center';g.textBaseline='middle';g.fillText('Labu 💕',0,2);g.font='46px serif';g.fillText('🐱',0,-34);g.restore();
+  if(!G.dead&&!(G.inv&&Math.floor(G.t*12)%2)){g.save();g.translate(G.x,G.y);g.rotate(Math.max(-.3,Math.min(.3,G.vx/1200)));shape(g,0,0,r,G.k,G.sq);g.restore();if(G.held){g.strokeStyle='#fff9';g.lineWidth=3;g.setLineDash([5,5]);g.beginPath();g.ellipse(G.x,G.y,r*.85+6,r+6,0,0,6.29);g.stroke();g.setLineDash([])}}
+  g.font='34px serif';g.textAlign='center';g.textBaseline='middle';for(const it of G.items)g.fillText(it.e,it.x,it.y);
+  for(const p of G.parts){g.globalAlpha=Math.min(1,p.l*1.5);if(p.e){g.font=p.s+'px serif';g.fillText(p.e,p.x,p.y)}else{g.fillStyle=p.c;g.fillRect(p.x,p.y,p.s,p.s)}}g.globalAlpha=1;
+  if(G.dead&&G.pt>0&&G.title[0]==='B'){g.save();g.translate(G.x,G.y);g.rotate(-.15);g.font='800 '+(60+(.9-G.pt)*40)+"px 'Baloo 2',sans-serif";g.lineWidth=8;g.strokeStyle='#d22';g.fillStyle='#ffe14d';g.strokeText('POP!',0,0);g.fillText('POP!',0,0);g.restore()}
+  g.strokeStyle='rgba(200,220,255,.6)';g.lineWidth=1.5;g.beginPath();for(const d of G.rain){g.moveTo(d.x,d.y);g.lineTo(d.x-4,d.y-14)}g.stroke();
+  g.fillStyle='#fff';g.font="700 16px 'Baloo 2',sans-serif";g.textAlign='center';if(G.t<6)g.fillText('Balloon ko pakad ke kahin bhi le jao · Double tap = POP!',W/2,H*.18);if(G.held&&G.y>H*.55&&!G.dead)g.fillText('Chhodo! Helium ise wapas upar le jayegi ☁️',W/2,H*.25)
+  g.restore();
+}
+let last=performance.now();
+(function loop(n){const dt=Math.min(.033,(n-last)/1000);last=n;if(cur==='fill')drawFill(dt);else if(cur==='game'&&G){upd(dt);drawG()}requestAnimationFrame(loop)})(last);
+ui();
+</script></body></html>
